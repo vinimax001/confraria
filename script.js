@@ -1,4 +1,3 @@
-
 // script.js
 const countdownElement = document.getElementById("countdown");
 const targetTime = new Date();
@@ -22,3 +21,14 @@ function updateCountdown() {
 
 setInterval(updateCountdown, 1000);
 updateCountdown();
+
+// Correção do erro de digitação e ajuste na lógica de animação das sections
+document.addEventListener("scroll", function () {
+  const sections = document.querySelectorAll(".alt-bg");
+  sections.forEach(section => {
+    const rect = section.getBoundingClientRect();
+    if (rect.top <= window.innerHeight * 0.8) {
+      section.classList.add("visible");
+    }
+  });
+});

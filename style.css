@@ -1,20 +1,65 @@
-
 /* style.css */
 body {
   margin: 0;
   font-family: 'Arial', sans-serif;
-  font-weight: bolder;
+  font-weight: bolder; /* Considerar usar 'bold' ou um valor numérico como 700 */
   background: linear-gradient(to bottom, #333334, #0e0d0f);
   color: white;
   text-align: center;
+  /* Adiciona padding no topo do body para compensar a altura do header fixo.
+     Ajuste o valor (ex: 60px) de acordo com a altura real do seu header.
+     A altura do header é roughly (padding-top + padding-bottom + altura da linha do texto).
+     Ex: 10px + 10px + ~17px (para font 14px) = ~37px. Usar um valor como 50px-60px dá uma margem. */
+  padding-top: 55px; /* Ajuste este valor conforme a altura do seu header */
 }
 
 header {
   background-color: red;
   color: white;
-  padding: 10px 0;
+  padding: 15px 0; /* Aumentei um pouco o padding para dar mais espaço */
   font-weight: bold;
   font-size: 14px;
+  position: fixed;   /* Fixa o header no topo da tela */
+  top: 0;
+  left: 0;
+  width: 100%;       /* Faz o header ocupar toda a largura */
+  z-index: 1000;     /* Garante que o header fique acima de outros elementos */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3); /* Sombra sutil para destacar o header */
+}
+
+/* Estilo geral das sections (Mobile First) */
+section {
+  padding: 2.5em 1.5em; /* Padding para mobile */
+  font-size: 1.1em;
+  line-height: 1.7em;
+  color: #ffffff;
+  font-family: 'Arial', sans-serif;
+  transition: background-color 0.6s ease-in-out, opacity 0.6s ease-out, transform 0.6s ease-out;
+  /* Em telas pequenas (mobile-first), as sections ocuparão a largura total disponível */
+  box-sizing: border-box; /* Garante que padding e border não aumentem a largura total */
+}
+
+/* Tons progressivos de cinza escuro para preto com sombra discreta */
+.alt-bg:nth-of-type(odd) {
+  background: linear-gradient(180deg, #1a1a1a, #0f0f0f);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.alt-bg:nth-of-type(even) {
+  background: linear-gradient(180deg, #222222, #171717);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Animação de entrada suave */
+.alt-bg {
+  opacity: 0;
+  transform: translateY(30px);
+  will-change: opacity, transform;
+}
+
+.alt-bg.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .countdown {
@@ -26,6 +71,9 @@ header {
   margin: 30px 0 10px;
   font-size: 28px;
   font-weight: bold;
+  color: #e6cf20e5;
+  /* Se o logo estiver DENTRO do header, o padding-top do body
+     e a altura do header precisarão ser recalculados. */
 }
 
 .highlight {
@@ -35,8 +83,10 @@ header {
 
 .description {
   font-size: 18px;
-  margin: 20px auto;
-  width: 90%;
+  margin: 20px auto; /* 'auto' nas laterais centraliza se tiver width ou max-width */
+  width: 90%;        /* Em mobile, ocupa 90% da largura do container pai (section) */
+  max-width: 600px;  /* Em todas as telas, não passará de 600px,
+                        mas será 90% se o container for menor que ~660px */
 }
 
 .date-box {
@@ -51,10 +101,10 @@ header {
 .price-box {
   background: rgba(105, 103, 10, 0.8);
   border: 2px solid rgb(255, 255, 41);
-  margin: 20px auto;
+  margin: 20px auto; /* Centraliza a caixa de preço */
   padding: 30px 20px;
   border-radius: 15px;
-  max-width: 400px;
+  max-width: 400px;  /* Largura máxima para a caixa de preço em todas as telas */
 }
 
 .old-price {
@@ -104,11 +154,52 @@ header {
 
 footer {
   margin-top: 40px;
+  padding-bottom: 20px; /* Adiciona um respiro no final da página */
 }
 
+/* Responsividade (Mobile First) */
+/* Estilos base (acima) são para mobile. Abaixo, ajustes para telas maiores. */
+
+/* Para tablets e telas um pouco maiores (ex: a partir de 768px) */
 @media (min-width: 768px) {
   .description {
     font-size: 20px;
-    max-width: 600px;
+    /* max-width: 600px; já está definido globalmente, o que é bom. */
+  }
+
+  /* Faz as sections (conteúdo principal) ocuparem menos espaço e serem centralizadas */
+  section {
+    padding: 3em 2em;   /* Ajuste o padding para telas maiores */
+    max-width: 720px;   /* Largura máxima para o conteúdo principal nesta tela */
+    margin-left: auto;  /* Centraliza a section */
+    margin-right: auto; /* Centraliza a section */
+  }
+
+  .logo {
+    font-size: 32px; /* Exemplo: aumentar um pouco o logo */
+  }
+}
+
+/* Para desktops e telas largas (ex: a partir de 1024px) */
+@media (min-width: 1024px) {
+  section {
+    max-width: 960px; /* Conteúdo principal um pouco mais largo */
+    padding: 3.5em 2.5em;
+  }
+
+  .description {
+    font-size: 22px;
+    /* max-width: 700px; /* Se quiser aumentar o max-width da descrição também */
+  }
+
+  .logo {
+    font-size: 36px;
+  }
+}
+
+/* Para telas muito largas (Opcional, ex: a partir de 1280px) */
+@media (min-width: 1280px) {
+  section {
+    max-width: 1140px; /* Limite comum para containers em telas grandes */
   }
 }
