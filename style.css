@@ -89,6 +89,16 @@ section {
                         mas será 90% se o container for menor que ~660px */
 }
 
+.date-button-wrapper {
+  display: flex;
+  flex-direction: column;  /* Um abaixo do outro */
+  align-items: center;     /* Centraliza horizontalmente */
+  justify-content: center; /* Centraliza verticalmente se necessário */
+  margin-top: 30px;
+  gap: 20px;               /* Espaçamento entre .date-box e botão */
+}
+
+
 .date-box {
   background: #4b24c7;
   display: inline-block;
