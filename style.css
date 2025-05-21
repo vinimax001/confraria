@@ -33,6 +33,12 @@ h2{
   color: #FACC15;
 }
 
+a {
+  color: white;
+  text-decoration: none; /* Remove o sublinhado padrão */
+  transition: color 0.3s ease; /* Transição suave para a cor */
+}
+
 .image-container {
   width: 100%;
   max-width: 500px; /* Defina o tamanho máximo desejado */
