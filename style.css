@@ -27,6 +27,11 @@ header {
   box-shadow: 0 2px 5px rgba(0,0,0,0.3); /* Sombra sutil para destacar o header */
 }
 
+h3{
+  color: #FACC15;
+}
+
+
 /* Estilo geral das sections (Mobile First) */
 section {
   padding: 2.5em 1.5em; /* Padding para mobile */
