@@ -1,4 +1,6 @@
 /* style.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
 body {
   margin: 0;
   font-family: 'Arial', sans-serif;
@@ -27,9 +29,23 @@ header {
   box-shadow: 0 2px 5px rgba(0,0,0,0.3); /* Sombra sutil para destacar o header */
 }
 
-h3{
+h2{
   color: #FACC15;
 }
+
+.image-container {
+  width: 100%;
+  max-width: 500px; /* Defina o tamanho máximo desejado */
+  margin: 0 auto; /* Centraliza a div */
+  overflow: hidden;
+}
+
+.image-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
 
 
 /* Estilo geral das sections (Mobile First) */
